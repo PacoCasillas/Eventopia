@@ -37,14 +37,14 @@ Event.init(
       allowNull: false,
     },
     created_by: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
-    attendees: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false,
-      defaultValue: [],
-    },
+    // attendees: {
+    //   type: DataTypes.ARRAY(DataTypes.STRING),
+    //   allowNull: false,
+    //   defaultValue: [],
+    // },
   },
   {
     sequelize,
