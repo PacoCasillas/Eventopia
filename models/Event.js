@@ -16,21 +16,34 @@ Event.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    date: {
-      type: DataTypes.DATE,
+    description: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    eventAddress: {
+    cost: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    time: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+    date: {
+      type: DataTypes.DATE,
       allowNull: false,
     },
     capacity: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    description: {
+    created_by: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    attendees: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: false,
+      defaultValue: [],
     },
   },
   {
