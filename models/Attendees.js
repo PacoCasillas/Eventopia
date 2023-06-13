@@ -1,36 +1,32 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Event extends Model {}
+class Attendees extends Model {}
 
-Event.init(
+Attendees.init(
   {
-    // Define the columns for the Event model
+    // Define the columns for the Attendees model
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    date: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    eventAddress: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    capacity: {
+    eventId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      refereces: {
+        model: "Event",
+        key: "id",
+      },
     },
-    description: {
-      type: DataTypes.STRING,
+    userId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
+      refereces: {
+        model: "User",
+        key: "id",
+      },
     },
   },
   {
@@ -38,8 +34,8 @@ Event.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "event",
+    modelName: "attendees",
   }
 );
 
-module.exports = Event;
+module.exports = Attendees;
