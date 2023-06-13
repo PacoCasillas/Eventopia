@@ -1,1 +1,3 @@
-CREATE DATABASE IF NOT EXISTS eventopia_db;
+DROP DATABASE IF EXISTS eventopia_db;
+
+CREATE DATABASE eventopia_db;
