@@ -27,6 +27,13 @@ User.belongsToMany(Event, { through: Favorites, foreignKey: "userId" });
 // Foreign key specifies that favorites table is linked to an event
 Event.belongsToMany(User, { through: Favorites, foreignKey: "eventId" });
 
+// A user can create many events
+// and an event can be created by many users
+// Foreign key specifies that the event table is linked to a user
+User.hasMany(Event, { foreignKey: "created_by" });
+
+Event.belongsTo(User, { foreignKey: "created_by" });
+
 module.exports = {
   Attendees,
   Event,
