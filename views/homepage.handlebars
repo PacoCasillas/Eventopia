@@ -1,0 +1,11 @@
+{{#each allEvents as |event|}}
+  <section class="event-box" id="posts-{{event.id}}">
+    <section class="event-header">
+      <h4 class="event-title">{{event.title}}</h4>
+      <h2 class="event-date">{{format_date event.event_date}}</h2>
+    </section>
+    <section class="event-body">
+      <p class="event-details">{{event.event_details}}</p>
+    </section>
+  </section>
+{{/each}}
