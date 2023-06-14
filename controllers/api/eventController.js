@@ -1,4 +1,4 @@
-const { Event } = require('../models');
+const { Event } = require("../../models");
 
 // Create a new event
 const createEvent = async (req, res) => {
@@ -7,7 +7,7 @@ const createEvent = async (req, res) => {
     res.status(201).json(event);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Failed to create event' });
+    res.status(500).json({ error: "Failed to create event" });
   }
 };
 
@@ -20,7 +20,7 @@ const updateEvent = async (req, res) => {
     res.json(event);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Failed to update event' });
+    res.status(500).json({ error: "Failed to update event" });
   }
 };
 
@@ -30,10 +30,10 @@ const deleteEvent = async (req, res) => {
     await Event.destroy({
       where: { id: req.params.id },
     });
-    res.json({ message: 'Event deleted successfully' });
+    res.json({ message: "Event deleted successfully" });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Failed to delete event' });
+    res.status(500).json({ error: "Failed to delete event" });
   }
 };
 
