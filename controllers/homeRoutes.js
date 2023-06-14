@@ -1,31 +1,41 @@
 const router = require("express").Router();
 const withAuth = require("../utils/auth");
-const { Event, User } = require("../models");
+// const { Event } = require("../models");
+
+router.get("/", (req, res) => {
+  // If the user is already logged in, redirect to the homepage
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+  // Otherwise, render the 'login' template
+  res.render("homepage");
+});
 
 // GET ALL EVENTS -> http://localhost:3001/
-router.get("/", async (req, res) => {
-  try {
-    const eventData = await Event.findAll({
-      attributes: [
-        "id",
-        "title",
-        "description",
-        "cost",
-        "time",
-        "date",
-        "capacity",
-      ],
-    });
-    const allEvents = eventData.map((event) => event.get({ plain: true })); // it will contain plain JavaScript objects representing each post, instead of Sequelize model instances.
-    res.render("main", {
-      allEvents,
-      logged_in: req.session.logged_in, // to determine whether or not to display the login/logout links in the header
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
+// router.get("/", async (req, res) => {
+//   try {
+//     const eventData = await Event.findAll({
+//       attributes: [
+//         "id",
+//         "title",
+//         "description",
+//         "cost",
+//         "time",
+//         "date",
+//         "capacity",
+//       ],
+//     });
+//     const allEvents = eventData.map((event) => event.get({ plain: true })); // it will contain plain JavaScript objects representing each post, instead of Sequelize model instances.
+//     res.render("main", {
+//       allEvents,
+//       logged_in: req.session.logged_in, // to determine whether or not to display the login/logout links in the header
+//     });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 // LOGIN -> http://localhost:3001/login
 // router.get("/login", (req, res) => {
@@ -70,5 +80,7 @@ router.get("/", async (req, res) => {
 //     res.status(500).json(err);
 //   }
 // });
+
+// FAVORITES -> http://localhost:3001/favorites
 
 module.exports = router;
