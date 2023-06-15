@@ -7,7 +7,7 @@ const eventData = [
     cost: 9.99,
     capacity: 100,
     startDate: "2023-07-01",
-    endDate: "2023-07-01",
+    endDate: "2023-06-14",
     location: "Victoria Park",
     startTime: "2:00 PM",
     endTime: "10:00 PM",
