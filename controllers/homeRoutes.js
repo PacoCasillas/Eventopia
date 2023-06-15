@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Op } = require("sequelize");
 const withAuth = require("../utils/auth");
-const { Event, User } = require("../models");
+const { Event, User, Favorites, Attendees } = require("../models");
 
 // GET ALL EVENTS -> http://localhost:3001/
 router.get("/", async (req, res) => {
@@ -111,14 +111,65 @@ router.get("/signup", (req, res) => {
 });
 
 // FAVORITES -> http://localhost:3001/favorites
-router.get("/favorites", (req, res) => {
-  // If the user is already logged in, redirect to the homepage
-  if (req.session.loggedIn) {
-    res.redirect("/");
-    return;
+router.get("/favorites", async (req, res) => {
+  try {
+    // Commented out for future authentication implementation
+    // if (!req.session.logged_in) {
+    //   res.redirect("/login");
+    //   return;
+    // }
+
+    // commented out for hen we have login user id 
+    // const userId = req.session.user_id;
+
+    // hardcoded user for testing purposes
+    const userId = 2;
+
+    // Fetch the user's favorites
+    const favoritesData = await Favorites.findAll({
+      where: {
+        // user logged in 
+        userId,
+      },
+      include: [
+        {
+          model: Event,
+          attributes: ["title"],
+        },
+      ],
+    });
+
+    const favorites = favoritesData.map((favorite) =>
+      favorite.Event.get({ plain: true })
+    );
+
+    // Fetch the events that the user is attending
+    const attendingData = await Attendees.findAll({
+      where: {
+        userId,
+      },
+      include: [
+        {
+          model: Event,
+          attributes: ["title"],
+        },
+      ],
+    });
+
+    const attending = attendingData.map((attendee) =>
+      attendee.Event.get({ plain: true })
+    );
+
+    res.render("favorites", {
+      favorites,
+      attending,
+      // Commented out for future authentication implementation
+      // logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
   }
-  // Otherwise, render the 'favorites' template
-  res.render("favorites");
 });
 
 router.get(/create-event/, async (req, res) => {

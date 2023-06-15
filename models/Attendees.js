@@ -15,7 +15,7 @@ Attendees.init(
     eventId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      refereces: {
+      references: {
         model: "Event",
         key: "id",
       },
@@ -23,7 +23,7 @@ Attendees.init(
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      refereces: {
+      references: {
         model: "User",
         key: "id",
       },
