@@ -3,6 +3,7 @@ const withAuth = require("../utils/auth");
 const { Event, User } = require("../models");
 
 // GET ALL EVENTS -> http://localhost:3001/
+// ADD A FILTER FOR PAST EVENTS (WHERE END DATE IS LESS THAN TODAY)
 router.get("/", async (req, res) => {
   try {
     const eventData = await Event.findAll({
