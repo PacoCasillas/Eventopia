@@ -24,10 +24,6 @@ Event.init(
       type: DataTypes.FLOAT,
       allowNull: false,
     },
-    time: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     capacity: {
       type: DataTypes.INTEGER,
       allowNull: false,
