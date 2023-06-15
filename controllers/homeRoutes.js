@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
         "startTime",
         "endTime",
       ],
-      // FILTER FOR PAST EVENTS WHERE END DATE IS LESS THAN TODAY
+      // FILTER TO DISPLAY ONLY FUTURE EVENTS -> EVENTS WHERE END DATE IS LESS THAN TODAY
       where: {
         endDate: {
           [Op.gte]: new Date(),
@@ -39,25 +39,36 @@ router.get("/", async (req, res) => {
   }
 });
 
-// DASHBOARD -> http://localhost:3001/dashboard
-// ADD withAuth
+// DASHBOARD -> http://localhost:3001/dashboard  -----> ADD withAuth
 router.get("/dashboard", async (req, res) => {
   try {
     // const userId = req.session.user_id;
     // console.log(req.session.user_id);
 
-    // const dashboardData = await Event.findAll({
-    //   where: { user_posts_id: userId }, // Fetch only posts created by the logged-in user
-    //   where: { user_id: userId },
-    //   order: [["post_date", "DESC"]], // DO WE HAVE A POST_DATE COLUMN?
-    //   include: [{ model: User }],
-    // });
+    const dashboardData = await Event.findAll({
+      // Fetch only posts created by the logged-in user
+      // where: { created_by: userId },
+      attributes: [
+        "id",
+        "title",
+        "description",
+        "cost",
+        "capacity",
+        "location",
+        "startDate",
+        "endDate",
+        "startTime",
+        "endTime",
+      ],
+      order: [["startDate", "DESC"]],
+      include: [{ model: User }],
+    });
 
-    // const userPosts = postData.map((post) => post.get({ plain: true }));
+    // const userEvents = dashboardData.map((post) => post.get({ plain: true }));
 
     res.render("dashboard", {
-      // userPosts,
-      // loggedIn: req.session.loggedIn
+      // userEvents,
+      // loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     console.log(err);
@@ -68,10 +79,10 @@ router.get("/dashboard", async (req, res) => {
 // CALENDAR -> http://localhost:3001/calendar
 router.get("/calendar", (req, res) => {
   // If the user is already logged in, redirect to the homepage
-  // if (req.session.loggedIn) {
-  //   res.redirect("/");
-  //   return;
-  // }
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
   // Otherwise, render the 'login' template
   res.render("calendar");
 });
@@ -91,10 +102,10 @@ router.get("/login", (req, res) => {
 // SIGNUP -> http://localhost:3001/signup
 router.get("/signup", (req, res) => {
   // If the user is already logged in, redirect to the homepage
-  // if (req.session.loggedIn) {
-  //   res.redirect("/");
-  //   return;
-  // }
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
   // Otherwise, render the 'signup' template
   res.render("signup");
 });
