@@ -28,7 +28,7 @@ router.get("/", async (req, res) => {
 });
 
 // DASHBOARD -> http://localhost:3001/dashboard
-router.get("/dashboard", withAuth, async (req, res) => {
+router.get("/dashboard", async (req, res) => {
   try {
     // const userId = req.session.user_id;
     // console.log(req.session.user_id);
@@ -55,10 +55,10 @@ router.get("/dashboard", withAuth, async (req, res) => {
 // CALENDAR -> http://localhost:3001/calendar
 router.get("/calendar", (req, res) => {
   // If the user is already logged in, redirect to the homepage
-  if (req.session.loggedIn) {
-    res.redirect("/");
-    return;
-  }
+  // if (req.session.loggedIn) {
+  //   res.redirect("/");
+  //   return;
+  // }
   // Otherwise, render the 'login' template
   res.render("calendar");
 });
