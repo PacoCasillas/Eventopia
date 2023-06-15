@@ -12,10 +12,12 @@ router.get("/", async (req, res) => {
         "title",
         "description",
         "cost",
-        "time",
-        "date",
         "capacity",
-        "created_by",
+        "location",
+        "startDate",
+        "endDate",
+        "startTime",
+        "endTime",
       ],
     });
     const allEvents = eventData.map((event) => event.get({ plain: true })); // it will contain plain JavaScript objects representing each post, instead of Sequelize model instances.
