@@ -1,25 +1,29 @@
 const router = require("express").Router();
 const withAuth = require("../utils/auth");
-// const { Event, User } = require("../models");
+const { Event, User } = require("../models");
 
 // GET ALL EVENTS -> http://localhost:3001/
+// ADD A FILTER FOR PAST EVENTS (WHERE END DATE IS LESS THAN TODAY)
 router.get("/", async (req, res) => {
   try {
-    // const eventData = await Event.findAll({
-    //   attributes: [
-    //     "id",
-    //     "title",
-    //     "description",
-    //     "cost",
-    //     "time",
-    //     "date",
-    //     "capacity",
-    //   ],
-    // });
-    // const allEvents = eventData.map((event) => event.get({ plain: true })); // it will contain plain JavaScript objects representing each post, instead of Sequelize model instances.
+    const eventData = await Event.findAll({
+      attributes: [
+        "id",
+        "title",
+        "description",
+        "cost",
+        "capacity",
+        "location",
+        "startDate",
+        "endDate",
+        "startTime",
+        "endTime",
+      ],
+    });
+    const allEvents = eventData.map((event) => event.get({ plain: true })); // it will contain plain JavaScript objects representing each post, instead of Sequelize model instances.
     res.render("homepage", {
-      // allEvents,
-      // logged_in: req.session.logged_in, // to determine whether or not to display the login/logout links in the header
+      allEvents,
+      logged_in: req.session.logged_in, // to determine whether or not to display the login/logout links in the header
     });
   } catch (err) {
     console.log(err);
@@ -28,6 +32,7 @@ router.get("/", async (req, res) => {
 });
 
 // DASHBOARD -> http://localhost:3001/dashboard
+// ADD withAuth
 router.get("/dashboard", async (req, res) => {
   try {
     // const userId = req.session.user_id;
@@ -65,6 +70,7 @@ router.get("/calendar", (req, res) => {
 
 // LOGIN -> http://localhost:3001/login
 router.get("/login", (req, res) => {
+  console.log(req.body);
   // If the user is already logged in, redirect to the homepage
   if (req.session.loggedIn) {
     res.redirect("/");
