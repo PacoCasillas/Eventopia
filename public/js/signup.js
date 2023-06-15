@@ -10,7 +10,7 @@ signupBtn.addEventListener("click", (e) => {
     username,
     password,
   };
-  fetch("/signup", {
+  fetch("/api/signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
