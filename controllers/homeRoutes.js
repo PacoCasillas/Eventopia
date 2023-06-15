@@ -111,5 +111,14 @@ router.get("/signup", (req, res) => {
 });
 
 // FAVORITES -> http://localhost:3001/favorites
+router.get("/favorites", (req, res) => {
+  // If the user is already logged in, redirect to the homepage
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+  // Otherwise, render the 'favorites' template
+  res.render("favorites");
+});
 
 module.exports = router;
