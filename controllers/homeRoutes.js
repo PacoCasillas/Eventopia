@@ -86,5 +86,12 @@ router.get("/signup", (req, res) => {
 });
 
 // FAVORITES -> http://localhost:3001/favorites
-
+router.get(/create-event/, async (req, res) => {
+  try {
+    res.render("createEvents");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 module.exports = router;
