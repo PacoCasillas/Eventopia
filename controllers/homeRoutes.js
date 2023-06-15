@@ -1,9 +1,9 @@
 const router = require("express").Router();
+const { Op } = require("sequelize");
 const withAuth = require("../utils/auth");
 const { Event, User } = require("../models");
 
 // GET ALL EVENTS -> http://localhost:3001/
-// ADD A FILTER FOR PAST EVENTS (WHERE END DATE IS LESS THAN TODAY)
 router.get("/", async (req, res) => {
   try {
     const eventData = await Event.findAll({
@@ -19,11 +19,19 @@ router.get("/", async (req, res) => {
         "startTime",
         "endTime",
       ],
+      // FILTER FOR PAST EVENTS WHERE END DATE IS LESS THAN TODAY
+      where: {
+        endDate: {
+          [Op.gte]: new Date(),
+        },
+      },
     });
-    const allEvents = eventData.map((event) => event.get({ plain: true })); // it will contain plain JavaScript objects representing each post, instead of Sequelize model instances.
+    // it will contain plain JavaScript objects representing each post, instead of Sequelize model instances.
+    const allEvents = eventData.map((event) => event.get({ plain: true }));
     res.render("homepage", {
       allEvents,
-      logged_in: req.session.logged_in, // to determine whether or not to display the login/logout links in the header
+      // to determine whether or not to display the login/logout links in the header
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     console.log(err);
