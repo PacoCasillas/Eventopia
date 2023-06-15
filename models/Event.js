@@ -24,16 +24,28 @@ Event.init(
       type: DataTypes.FLOAT,
       allowNull: false,
     },
-    time: {
+    capacity: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    location: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    date: {
-      type: DataTypes.DATE,
+    startDate: {
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
-    capacity: {
-      type: DataTypes.INTEGER,
+    endDate: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+    },
+    startTime: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    endTime: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
     created_by: {
