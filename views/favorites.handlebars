@@ -1,0 +1,21 @@
+<h2>Favorites</h2>
+{{#if favorites}}
+  <ul>
+    {{#each favorites}}
+      <li>{{event.title}}</li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>No favorites yet.</p>
+{{/if}}
+
+<h2>Attending</h2>
+{{#if attending}}
+  <ul>
+    {{#each attending}}
+      <li>{{event.title}}</li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>Not attending any events yet.</p>
+{{/if}}

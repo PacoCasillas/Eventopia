@@ -5,8 +5,6 @@ const User = require("./User");
 
 // Many to many associations between models
 
-// An event is created by 1 user.
-
 // An event can have many users associated with it
 // and a user can attend many events
 // Foreign key specifies that the attendees table is linked to an event
@@ -32,7 +30,15 @@ Event.belongsToMany(User, { through: Favorites, foreignKey: "eventId" });
 // Foreign key specifies that the event table is linked to a user
 User.hasMany(Event, { foreignKey: "created_by" });
 
+// An event is created by 1 user.
+// Foreign key specifies which user created the event
 Event.belongsTo(User, { foreignKey: "created_by" });
+
+Favorites.belongsTo(User, { foreignKey: "userId" });
+Favorites.belongsTo(Event, { foreignKey: "eventId" });
+
+Attendees.belongsTo(User, { foreignKey: "userId" });
+Attendees.belongsTo(Event, { foreignKey: "eventId" });
 
 module.exports = {
   Attendees,
