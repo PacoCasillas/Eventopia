@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Event, User } = require("../../models");
+const { Event } = require("../../models");
 
 // CREATE EVENT -> http://localhost:3001/api/events
 router.post("/", async (req, res) => {

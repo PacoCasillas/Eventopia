@@ -42,8 +42,11 @@ router.get("/", async (req, res) => {
 // DASHBOARD -> http://localhost:3001/dashboard  -----> ADD withAuth
 router.get("/dashboard", async (req, res) => {
   try {
-    const userId = req.session.user_id;
+    // const userId = req.session.user_id;
     // console.log(req.session.user_id);
+
+    // For it to render data without user logged in 
+    const userId = 1;
 
     const dashboardData = await Event.findAll({
       // Fetch only posts created by the logged-in user
@@ -123,7 +126,7 @@ router.get("/favorites", async (req, res) => {
     // const userId = req.session.user_id;
 
     // hardcoded user for testing purposes
-    const userId = 3;
+    const userId = 1;
 
     // Fetch the user's favorites
     const favoritesData = await Favorites.findAll({
