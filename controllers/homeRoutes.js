@@ -163,11 +163,8 @@ router.get("/favorites", async (req, res) => {
         {
           model: Event,
           attributes: [
-            "id",
             "title",
             "description",
-            "cost",
-            "capacity",
             "location",
             "startDate",
             "endDate",
