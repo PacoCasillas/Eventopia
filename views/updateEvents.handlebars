@@ -1,0 +1,96 @@
+<div class="d-flex col-12 justify-content-center my-5">
+  <form
+    class="d-flex flex-row flex-wrap col-4 border border-black rounded-4 p-4"
+  >
+    <div class="form-group col-12 text-center my-2">
+      <label for="event-title">Event title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="event-title"
+        placeholder="{{event.title}}"
+      />
+    </div>
+    <div class="form-group col-6 text-center my-2">
+      <label for="event-start-date">Event Start Date</label>
+      <input
+        type="date"
+        class="form-control"
+        id="event-start-date"
+        placeholder="{{event.startDate}}"
+      />
+    </div>
+    <div class="form-group col-6 text-center my-2">
+      <label for="event-start-time">Event Start Time</label>
+      <input
+        type="time"
+        class="form-control"
+        id="event-start-time"
+        placeholder="{{event.startTime}}"
+      />
+    </div>
+    <div class="form-group col-6 text-center my-2">
+      <label for="event-end-date">Event Start Date</label>
+      <input
+        type="date"
+        class="form-control"
+        id="event-end-date"
+        placeholder="{{event.endDate}}"
+      />
+    </div>
+    <div class="form-group col-6 text-center my-2">
+      <label for="event-end-time">Event Start Time</label>
+      <input
+        type="time"
+        class="form-control"
+        id="event-end-time"
+        placeholder="{{event.endTime}}"
+      />
+    </div>
+    <div class="form-group col-12 text-center my-2">
+      <label for="event-description">Event Description</label>
+      <input
+        type="text"
+        class="form-control"
+        id="event-description"
+        placeholder="{{event.description}}"
+      />
+    </div>
+    <div class="form-group col-12 text-center my-2">
+      <label for="event-location">Event Location</label>
+      <input
+        type="text"
+        class="form-control"
+        id="event-location"
+        placeholder="{{event.location}}"
+      />
+    </div>
+    <div class="form-group col-6 text-center my-2">
+      <label for="event-cost">Event Cost</label>
+      <input
+        type="number"
+        class="form-control"
+        id="event-cost"
+        placeholder="{{event.cost}}"
+      />
+    </div>
+    <div class="form-group col-6 text-center my-2">
+      <label for="event-capacity">Event Capacity</label>
+      <input
+        type="number"
+        class="form-control"
+        id="event-capacity"
+        placeholder="{{event.capacity}}"
+      />
+    </div>
+    <div class="d-flex justify-content-center my-2 col-12">
+      <button
+        id="submit-update-btn"
+        data-id="{{event.id}}"
+        type="submit"
+        class="btn btn-primary"
+      >Update</button>
+    </div>
+  </form>
+</div>
+<script src="/js/update-events.js"></script>
