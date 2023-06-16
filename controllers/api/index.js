@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 const userRoutes = require("./userRoutes");
-const eventRoutes = require("./eventRoutes");
+const eventRoutes = require("./event-routes");
 
 router.use("/", userRoutes);
 
