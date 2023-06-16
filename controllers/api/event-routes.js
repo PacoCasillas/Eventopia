@@ -22,8 +22,8 @@ router.post("/", async (req, res) => {
   }
 });
 
-// UPDATE EVENT -> http://localhost:3001/api/events/
-router.put("/", async (req, res) => {
+// UPDATE EVENT -> http://localhost:3001/api/events/:id
+router.put("/:id", async (req, res) => {
   try {
     const eventData = await Event.update(
       {
@@ -40,7 +40,7 @@ router.put("/", async (req, res) => {
       },
       {
         where: {
-          id: req.body.id,
+          id: req.params.id,
         },
       }
     );
@@ -50,12 +50,12 @@ router.put("/", async (req, res) => {
   }
 });
 
-// DELETE AN EVENT -> http://localhost:3001/api/events/
-router.delete("/", async (req, res) => {
+// DELETE AN EVENT -> http://localhost:3001/api/events/:id
+router.delete("/:id", async (req, res) => {
   try {
     const eventData = await Event.destroy({
       where: {
-        id: req.body.id,
+        id: req.params.id,
       },
     });
     res.status(200).json(eventData);
