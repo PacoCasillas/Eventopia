@@ -1,6 +1,6 @@
-const signupBtn = document.getElementById("signupBtn");
-const signupUsername = document.getElementById("signupUsername");
-const signupPassword = document.getElementById("signupPassword");
+const signupBtn = document.getElementById("signup-btn");
+const signupUsername = document.getElementById("signup-username");
+const signupPassword = document.getElementById("signup-password");
 
 signupBtn.addEventListener("click", (e) => {
   e.preventDefault();

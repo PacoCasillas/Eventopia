@@ -1,44 +1,32 @@
-const { Event } = require("../../models");
+const router = require("express").Router();
+const { Event, User } = require("../../models");
 
-// Create a new event
-const createEvent = async (req, res) => {
+// CREATE new event
+router.post("/", async (req, res) => {
   try {
-    const event = await Event.create(req.body);
-    res.status(201).json(event);
+    req.body.created_by = req.session.user_id;
+    const eventData = await Event.create(req.body);
+    res.status(200).json(eventData);
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Failed to create event" });
+    res.status(400).json(err);
   }
-};
+});
 
-// Update an existing event
-const updateEvent = async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
-    const event = await Event.update(req.body, {
-      where: { id: req.params.id },
+    const eventData = await Event.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
     });
-    res.json(event);
+    if (!eventData) {
+      res.status(404).json({ message: "No event found with this id!" });
+      return;
+    }
+    res.status(200).json(eventData);
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Failed to update event" });
+    res.status(500).json(err);
   }
-};
+});
 
-// Delete an event
-const deleteEvent = async (req, res) => {
-  try {
-    await Event.destroy({
-      where: { id: req.params.id },
-    });
-    res.json({ message: "Event deleted successfully" });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Failed to delete event" });
-  }
-};
-
-module.exports = {
-  createEvent,
-  updateEvent,
-  deleteEvent,
-};
+module.exports = router;

@@ -62,12 +62,13 @@ router.get("/dashboard", async (req, res) => {
       ],
       order: [["startDate", "DESC"]],
       include: [{ model: User }],
+      where: { created_by: req.session.user_id },
     });
 
-    // const userEvents = dashboardData.map((post) => post.get({ plain: true }));
+    const userEvents = dashboardData.map((post) => post.get({ plain: true }));
 
     res.render("dashboard", {
-      // userEvents,
+      userEvents,
       // loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -119,7 +120,7 @@ router.get("/favorites", async (req, res) => {
     //   return;
     // }
 
-    // commented out for hen we have login user id 
+    // commented out for hen we have login user id
     // const userId = req.session.user_id;
 
     // hardcoded user for testing purposes
@@ -128,7 +129,7 @@ router.get("/favorites", async (req, res) => {
     // Fetch the user's favorites
     const favoritesData = await Favorites.findAll({
       where: {
-        // user logged in 
+        // user logged in
         userId,
       },
       include: [
@@ -172,9 +173,21 @@ router.get("/favorites", async (req, res) => {
   }
 });
 
-router.get(/create-event/, async (req, res) => {
+router.get("/create-event", async (req, res) => {
   try {
     res.render("createEvents");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/update-event/:id", async (req, res) => {
+  try {
+    const eventID = req.params.id;
+    const eventData = await Event.findByPk(eventID);
+    const event = eventData.get({ plain: true });
+    res.render("updateEvents", { event });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

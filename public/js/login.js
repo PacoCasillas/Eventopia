@@ -1,6 +1,6 @@
-const loginBtn = document.getElementById("loginBtn");
-const loginUsername = document.getElementById("loginUsername");
-const loginPassword = document.getElementById("loginPassword");
+const loginBtn = document.getElementById("login-btn");
+const loginUsername = document.getElementById("login-username");
+const loginPassword = document.getElementById("login-password");
 
 loginBtn.addEventListener("click", (e) => {
   e.preventDefault();

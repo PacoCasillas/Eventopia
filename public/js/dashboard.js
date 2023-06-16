@@ -1,6 +1,6 @@
-const createEventBtn = document.getElementById("create-event-btn");
+const createMyEventBtn = document.getElementById("create-event-btn");
 
-createEventBtn.addEventListener("click", (e) => {
+createMyEventBtn.addEventListener("click", (e) => {
   e.preventDefault();
   window.location.href = "/create-event";
 });
