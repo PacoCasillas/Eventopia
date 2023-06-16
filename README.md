@@ -44,7 +44,7 @@ Calender: Allows users to add their events to a calender. There also will be a o
 ## Usage
 
 1. Start the server: `npm start` or use npx nodemon
-2. Open a web browser and navigate to `http://localhost:3000` (or the configured port number).
+2. Open a web browser and navigate to `http://localhost:3001` (or the configured port number).
 3. Sign up for a new account or log in with existing credentials.
 4. Use the provided interface to create, edit, and delete events.
 5. Use the provided interface to browse all events and favourite them.
