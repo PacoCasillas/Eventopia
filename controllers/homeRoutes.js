@@ -62,7 +62,7 @@ router.get("/dashboard", async (req, res) => {
       ],
       order: [["startDate", "DESC"]],
       include: [{ model: User }],
-      where: { created_by: req.session.user_id },
+      // where: { created_by: req.session.user_id },
     });
 
     const userEvents = dashboardData.map((post) => post.get({ plain: true }));
