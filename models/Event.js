@@ -50,6 +50,7 @@ Event.init(
     },
     created_by: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: "user",
         key: "id",
