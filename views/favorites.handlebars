@@ -1,8 +1,16 @@
 <h2>Favorites</h2>
 {{#if favorites}}
   <ul>
-    {{#each favorites}}
-      <li>{{event.title}}</li>
+    {{#each favorites as |event|}}
+      <div class="p-3 mb-2 bg-light text-dark "><li><h3 class="event-title">{{event.title}}</h3>
+          <h5 class="event-date">From
+            {{startDate}}
+            To
+            {{endDate}}
+          </h5>
+          <p>At {{event.location}}</p>
+        </li>
+      </div>
     {{/each}}
   </ul>
 {{else}}
@@ -12,8 +20,16 @@
 <h2>Attending</h2>
 {{#if attending}}
   <ul>
-    {{#each attending}}
-      <li>{{event.title}}</li>
+    {{#each attending as |event|}}
+      <div class="p-3 mb-2 bg-light text-dark"><li><h3 class="event-title">{{event.title}}</h3>
+          <h5 class="event-date">From
+            {{startDate}}
+            To
+            {{endDate}}
+          </h5>
+          <p>At {{event.location}}</p>
+        </li>
+      </div>
     {{/each}}
   </ul>
 {{else}}
