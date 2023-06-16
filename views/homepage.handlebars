@@ -21,9 +21,10 @@
       <p>{{event.location}}</p>
     </section>
 
-    {{! BOTTON TO ATTEND AND LIKE }}
+    {{! BOTTON TO ATTEND AND FAVORITE }}
     <div class="btn-attend">
       <button
+        data-id="{{event.id}}"
         class="btn btn-primary"
         id="btn-attend"
         type="button"
@@ -33,6 +34,7 @@
 
     <div class="btn-favorite">
       <button
+        data-id="{{event.id}}"
         class="btn btn-primary"
         id="btn-favorite"
         type="button"
@@ -42,3 +44,5 @@
 
   </section>
 {{/each}}
+
+<script src="./js/homepage.js"></script>

@@ -42,12 +42,12 @@ router.get("/", async (req, res) => {
 // DASHBOARD -> http://localhost:3001/dashboard  -----> ADD withAuth
 router.get("/dashboard", async (req, res) => {
   try {
-    // const userId = req.session.user_id;
+    const userId = req.session.user_id;
     // console.log(req.session.user_id);
 
     const dashboardData = await Event.findAll({
       // Fetch only posts created by the logged-in user
-      // where: { created_by: userId },
+      where: { created_by: userId },
       attributes: [
         "id",
         "title",
@@ -62,14 +62,13 @@ router.get("/dashboard", async (req, res) => {
       ],
       order: [["startDate", "DESC"]],
       include: [{ model: User }],
-      // where: { created_by: req.session.user_id },
     });
 
     const userEvents = dashboardData.map((post) => post.get({ plain: true }));
 
     res.render("dashboard", {
       userEvents,
-      // loggedIn: req.session.loggedIn,
+      loggedIn: req.session.loggedIn, //determine whether or not to display the login/logout links in the header
     });
   } catch (err) {
     console.log(err);

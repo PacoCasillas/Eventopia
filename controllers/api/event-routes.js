@@ -3,6 +3,7 @@ const { Event, User } = require("../../models");
 
 // CREATE EVENT -> http://localhost:3001/api/events
 router.post("/", async (req, res) => {
+  // const created_by = 6;
   try {
     const eventData = await Event.create({
       title: req.body.title,
@@ -15,6 +16,7 @@ router.post("/", async (req, res) => {
       startTime: req.body.startTime,
       endTime: req.body.endTime,
       created_by: req.session.user_id,
+      // created_by: created_by,
     });
     res.status(200).json(eventData);
   } catch (err) {
