@@ -62,12 +62,13 @@ router.get("/dashboard", async (req, res) => {
       ],
       order: [["startDate", "DESC"]],
       include: [{ model: User }],
+      where: { created_by: req.session.user_id },
     });
 
-    // const userEvents = dashboardData.map((post) => post.get({ plain: true }));
+    const userEvents = dashboardData.map((post) => post.get({ plain: true }));
 
     res.render("dashboard", {
-      // userEvents,
+      userEvents,
       // loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -119,28 +120,39 @@ router.get("/favorites", async (req, res) => {
     //   return;
     // }
 
-    // commented out for hen we have login user id 
+    // commented out for when we have login user id
     // const userId = req.session.user_id;
 
     // hardcoded user for testing purposes
-    const userId = 2;
+    const userId = 3;
 
     // Fetch the user's favorites
     const favoritesData = await Favorites.findAll({
       where: {
-        // user logged in 
+        // filter through the data and only pull where user ID matches
         userId,
       },
       include: [
         {
           model: Event,
-          attributes: ["title"],
+          attributes: [
+            "id",
+            "title",
+            "description",
+            "cost",
+            "capacity",
+            "location",
+            "startDate",
+            "endDate",
+            "startTime",
+            "endTime",
+          ],
         },
       ],
     });
 
     const favorites = favoritesData.map((favorite) =>
-      favorite.Event.get({ plain: true })
+      favorite.event.get({ plain: true })
     );
 
     // Fetch the events that the user is attending
@@ -151,13 +163,24 @@ router.get("/favorites", async (req, res) => {
       include: [
         {
           model: Event,
-          attributes: ["title"],
+          attributes: [
+            "id",
+            "title",
+            "description",
+            "cost",
+            "capacity",
+            "location",
+            "startDate",
+            "endDate",
+            "startTime",
+            "endTime",
+          ],
         },
       ],
     });
 
     const attending = attendingData.map((attendee) =>
-      attendee.Event.get({ plain: true })
+      attendee.event.get({ plain: true })
     );
 
     res.render("favorites", {
@@ -172,4 +195,24 @@ router.get("/favorites", async (req, res) => {
   }
 });
 
+router.get("/create-event", async (req, res) => {
+  try {
+    res.render("createEvents");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/update-event/:id", async (req, res) => {
+  try {
+    const eventID = req.params.id;
+    const eventData = await Event.findByPk(eventID);
+    const event = eventData.get({ plain: true });
+    res.render("updateEvents", { event });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 module.exports = router;

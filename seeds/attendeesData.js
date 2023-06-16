@@ -2,47 +2,47 @@ const { Attendees } = require("../models");
 
 const attendeesData = [
   {
-    eventID: 1,
+    eventId: 1,
     userId: 1,
   },
   {
-    eventID: 1,
+    eventId: 1,
     userId: 2,
   },
   {
-    eventID: 1,
+    eventId: 1,
     userId: 4,
   },
   {
-    eventID: 2,
+    eventId: 2,
     userId: 2,
   },
   {
-    eventID: 2,
+    eventId: 2,
     userId: 4,
   },
   {
-    eventID: 3,
+    eventId: 3,
     userId: 2,
   },
   {
-    eventID: 3,
+    eventId: 3,
     userId: 4,
   },
   {
-    eventID: 3,
+    eventId: 3,
     userId: 5,
   },
   {
-    eventID: 4,
+    eventId: 4,
     userId: 3,
   },
   {
-    eventID: 5,
+    eventId: 5,
     userId: 1,
   },
   {
-    eventID: 5,
+    eventId: 5,
     userId: 5,
   },
 ];
