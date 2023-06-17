@@ -36,7 +36,6 @@ btnattend.forEach((btn) => {
 btnFavorite.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     const id = e.target.dataset.id;
-    // console.log("id", id);
 
     fetch("/api/favorites", {
       method: "POST",

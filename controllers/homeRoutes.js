@@ -83,7 +83,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
 // CALENDAR -> http://localhost:3001/calendar
 router.get("/calendar", withAuth, (req, res) => {
   // Otherwise, render the 'login' template
-  res.render("calendar");
+  res.render("calendar", { logged_In: req.session.logged_In });
 });
 
 // LOGIN -> http://localhost:3001/login
@@ -111,17 +111,7 @@ router.get("/signup", (req, res) => {
 // FAVORITES -> http://localhost:3001/favorites
 router.get("/favorites", withAuth, async (req, res) => {
   try {
-    // Commented out for future authentication implementation
-    // if (!req.session.logged_in) {
-    //   res.redirect("/login");
-    //   return;
-    // }
-
-    // commented out for when we have login user id
-    // const userId = req.session.user_id;
-
-    // hardcoded user for testing purposes
-    const userId = 1;
+    const userId = req.session.user_id;
 
     // Fetch the user's favorites
     const favoritesData = await Favorites.findAll({
@@ -180,6 +170,7 @@ router.get("/favorites", withAuth, async (req, res) => {
     res.render("favorites", {
       favorites,
       attending,
+      logged_In: req.session.logged_In,
       // Commented out for future authentication implementation
       // logged_in: req.session.logged_in,
     });
