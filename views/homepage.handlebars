@@ -1,57 +1,3 @@
-{{#if logged_In}}
-  {{#each allEvents as |event|}}
-    <div class="d-flex justify-content-center m-3">
-      <section
-        class="event-box card d-flex flex-column col-6 text-center p-4"
-        id="posts-{{event.id}}"
-      >
-        <section class="event-header">
-          <h3 class="event-title">{{event.title}}</h3>
-          <h5 class="event-date">From
-            {{startDate}}
-            To
-            {{endDate}}
-          </h5>
-        </section>
-        <section class="event-body">
-          <p class="event-details">{{event.description}}</p>
-          <p class="event-time">Start at
-            {{event.startTime}}
-            End at
-            {{event.endTime}}</p>
-          <p class="event-capacity-cost">Event capacity:
-            {{event.capacity}}
-            Cost:
-            {{event.cost}}</p>
-          <p>{{event.location}}</p>
-        </section>
-
-        <div class="d-flex m-2 justify-content-center">
-          <div class="btn-attend m-2">
-            <button
-              data-id="{{event.id}}"
-              class="btn btn-primary"
-              id="btn-attend"
-              type="button"
-              name="button"
-            >Attending</button>
-          </div>
-
-          <div class="btn-favorite m-2">
-            <button
-              data-id="{{event.id}}"
-              class="btn btn-primary"
-              id="btn-favorite"
-              type="button"
-              name="button"
-            >Favorite</button>
-          </div>
-        </div>
-      </section>
-    </div>
-  {{/each}}
-{{/if}}
-
 {{#each allEvents as |event|}}
   <div class="d-flex justify-content-center m-3">
     <section
@@ -60,11 +6,7 @@
     >
       <section class="event-header">
         <h3 class="event-title">{{event.title}}</h3>
-        <h5 class="event-date">From
-          {{startDate}}
-          To
-          {{endDate}}
-        </h5>
+        <h5 class="event-date">From {{startDate}} To {{endDate}}</h5>
       </section>
       <section class="event-body">
         <p class="event-details">{{event.description}}</p>
@@ -78,8 +20,38 @@
           {{event.cost}}</p>
         <p>{{event.location}}</p>
       </section>
+      <section>
+        {{!-- {{#if logged_In}} --}}
+        <div class="d-flex m-2 justify-content-center">
+
+          <div class="btn-attend m-2">
+
+            <button
+              data-id="{{event.id}}"
+              class="btn btn-primary"
+              id="btn-attend"
+              type="button"
+              name="button"
+            >Attending</button>
+
+          </div>
+          <div class="btn-favorite m-2">
+            <button
+              data-id="{{event.id}}"
+              class="btn btn-primary"
+              id="btn-favorite"
+              type="button"
+              name="button"
+            >Favorite</button>
+          </div>
+
+        </div>
+        {{!-- {{/if}} --}}
+      </section>
     </section>
   </div>
 {{/each}}
 
 <script src="./js/homepage.js"></script>
+
+{{!-- {{#if logged_In}}{{/if}} --}}
