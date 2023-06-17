@@ -109,7 +109,7 @@ router.get("/signup", (req, res) => {
 });
 
 // FAVORITES -> http://localhost:3001/favorites
-router.get("/favorites", async (req, res) => {
+router.get("/favorites", withAuth, async (req, res) => {
   try {
     // Commented out for future authentication implementation
     // if (!req.session.logged_in) {
