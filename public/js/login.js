@@ -9,7 +9,7 @@ loginBtn.addEventListener("click", (e) => {
   // Check password length
   if (password.length < 8) {
     alert("Password must be at least 8 characters long");
-    return; // Stop execution if the password is too short
+    return;
   }
 
   const data = {

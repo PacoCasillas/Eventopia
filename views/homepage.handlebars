@@ -21,37 +21,33 @@
         <p>{{event.location}}</p>
       </section>
       <section>
-        {{!-- {{#if logged_In}} --}}
-        <div class="d-flex m-2 justify-content-center">
+        {{#if ../logged_In}}
+          <div class="d-flex m-2 justify-content-center">
+            <div class="btn-attend m-2">
+              <button
+                data-id="{{event.id}}"
+                class="btn btn-primary"
+                id="btn-attend"
+                type="button"
+                name="button"
+              >Attending</button>
 
-          <div class="btn-attend m-2">
-
-            <button
-              data-id="{{event.id}}"
-              class="btn btn-primary"
-              id="btn-attend"
-              type="button"
-              name="button"
-            >Attending</button>
+            </div>
+            <div class="btn-favorite m-2">
+              <button
+                data-id="{{event.id}}"
+                class="btn btn-primary"
+                id="btn-favorite"
+                type="button"
+                name="button"
+              >Favorite</button>
+            </div>
 
           </div>
-          <div class="btn-favorite m-2">
-            <button
-              data-id="{{event.id}}"
-              class="btn btn-primary"
-              id="btn-favorite"
-              type="button"
-              name="button"
-            >Favorite</button>
-          </div>
-
-        </div>
-        {{!-- {{/if}} --}}
+        {{/if}}
       </section>
     </section>
   </div>
 {{/each}}
 
 <script src="./js/homepage.js"></script>
-
-{{!-- {{#if logged_In}}{{/if}} --}}
