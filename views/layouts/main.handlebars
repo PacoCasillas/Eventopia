@@ -37,9 +37,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="/favorites">Favorites</a>
                 </li>
-                {{#if loggedIn}}
+                {{#if logged_In}}
                   <li class="nav-item">
-                    <a class="nav-link" href="/logout">Login</a>
+                    <a class="nav-link logout" href="#">Logout</a>
                   </li>
                 {{else}}
                   <li class="nav-item">
@@ -57,7 +57,7 @@
         {{{body}}}
       </div>
     </main>
-    {{#if loggedIn}}
+    {{#if logged_In}}
       {{! CHANGE THIS LINK }}
       <script src="/js/logout.js"></script>
     {{/if}}
