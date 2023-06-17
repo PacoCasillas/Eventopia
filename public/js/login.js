@@ -26,6 +26,8 @@ loginBtn.addEventListener("click", (e) => {
     .then((res) => {
       if (res.status === 200) {
         window.location.href = "/dashboard";
+      } else {
+        alert("Account not found. Please sign up.");
       }
     })
     .catch((err) => {

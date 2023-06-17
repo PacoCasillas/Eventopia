@@ -2,7 +2,6 @@ const router = require("express").Router();
 const { Op } = require("sequelize");
 const withAuth = require("../utils/auth");
 const { Event, User, Favorites, Attendees } = require("../models");
-const session = require("express-session");
 
 // GET ALL EVENTS -> http://localhost:3001/
 router.get("/", async (req, res) => {
@@ -81,7 +80,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
 });
 
 // CALENDAR -> http://localhost:3001/calendar
-router.get("/calendar", withAuth, (req, res) => {
+router.get("/calendar", (req, res) => {
   // Otherwise, render the 'login' template
   res.render("calendar", { logged_In: req.session.logged_In });
 });
