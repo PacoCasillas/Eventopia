@@ -20,6 +20,8 @@ btnattend.forEach((btn) => {
         if (!response.ok) {
           throw new Error("Network response was not OK");
         }
+        // ALERT USER THAT THEY ARE ATTENDING THE EVENT
+        alert("You are now attending this event!");
         return response.json(); // Parse the response body as JSON
       })
       // Here, 'data' contains the parsed response data
@@ -36,7 +38,6 @@ btnattend.forEach((btn) => {
 btnFavorite.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     const id = e.target.dataset.id;
-    // console.log("id", id);
 
     fetch("/api/favorites", {
       method: "POST",
@@ -51,6 +52,7 @@ btnFavorite.forEach((btn) => {
         if (!response.ok) {
           throw new Error("Network response was not OK");
         }
+        alert("You favorited an event!");
         return response.json(); // Parse the response body as JSON
       })
       // Here, 'data' contains the parsed response data

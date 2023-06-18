@@ -6,6 +6,12 @@ loginBtn.addEventListener("click", (e) => {
   e.preventDefault();
   const username = loginUsername.value;
   const password = loginPassword.value;
+  // Check password length
+  if (password.length < 8) {
+    alert("Password must be at least 8 characters long");
+    return;
+  }
+
   const data = {
     username,
     password,
