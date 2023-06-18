@@ -20,7 +20,7 @@
     <div class="hero-text">
       <h1>Eventopia</h1>
       <h3>Discover Memorable Events</h3>
-      <h2><a href="#navbar-section" class="scroll-link">Find Events Near You!</a></h2>
+      <h2><a href="#navbar-section" class="scroll-link">Events For you!</a></h2>
     </div>
   </div>
 
@@ -55,9 +55,9 @@
                   <li class="nav-item">
                     <a class="nav-link" href="/favorites">Favorites</a>
                   </li>
-                  {{#if loggedIn}}
+                  {{#if logged_In}}
                     <li class="nav-item">
-                      <a class="nav-link" href="/logout">Login</a>
+                      <a class="nav-link logout" href="/logout">Logout</a>
                     </li>
                   {{else}}
                     <li class="nav-item">
