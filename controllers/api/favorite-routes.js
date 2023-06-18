@@ -8,7 +8,7 @@ router.post("/", async (req, res) => {
     const userId = req.session.user_id;
 
     // Get the event ID from ther request body (button click)
-    const eventId = req.body.eventId;
+    const eventId = req.body.event_id;
 
     // Create a new entry in the Favorites table
     await Favorites.create({ userId, eventId });
