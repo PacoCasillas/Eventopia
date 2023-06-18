@@ -20,7 +20,7 @@ submitNewEvent.addEventListener("click", (e) => {
   const location = eventLocation.value;
   const cost = eventCost.value;
   const capacity = eventCapacity.value;
-  const imageURL = imageInfo;
+  const imageUrl = imageInfo;
   const data = {
     title,
     startDate,
@@ -31,7 +31,7 @@ submitNewEvent.addEventListener("click", (e) => {
     location,
     cost,
     capacity,
-    imageURL,
+    imageUrl,
   };
   console.log(data);
   fetch("/api/events", {

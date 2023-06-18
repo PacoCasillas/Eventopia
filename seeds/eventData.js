@@ -12,6 +12,7 @@ const eventData = [
     startTime: "2:00 PM",
     endTime: "10:00 PM",
     created_by: 1,
+    imageUrl: "https://i.imgur.com/0Q6XtXo.jpg",
   },
   {
     title: "Hogs for Hospice",
@@ -23,6 +24,7 @@ const eventData = [
     location: "Seacliff Park",
     startTime: "10:00 AM",
     endTime: "10:00 PM",
+    imageUrl: "https://i.imgur.com/0Q6XtXo.jpg",
     created_by: 1,
   },
   {
@@ -34,6 +36,7 @@ const eventData = [
     endDate: "2023-07-06",
     location: "Seacliff Park",
     startTime: "7:00 PM",
+    imageUrl: "https://i.imgur.com/0Q6XtXo.jpg",
     endTime: "10:00 PM",
     created_by: 2,
   },
@@ -47,6 +50,7 @@ const eventData = [
     location: "Municipal Marina",
     startTime: "5:00 PM",
     endTime: "10:00 PM",
+    imageUrl: "https://i.imgur.com/0Q6XtXo.jpg",
     created_by: 3,
   },
   {
@@ -60,6 +64,7 @@ const eventData = [
     location: "Municipal Marina",
     startTime: "12:00 PM",
     endTime: "7:00 PM",
+    imageUrl: "https://i.imgur.com/0Q6XtXo.jpg",
     created_by: 4,
   },
 ];

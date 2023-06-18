@@ -4,12 +4,14 @@ const { Event } = require("../../models");
 // CREATE EVENT -> http://localhost:3001/api/events
 router.post("/", async (req, res) => {
   // const created_by = 6;
+  console.log("session", req.session.user_id);
   console.log(req.body);
   try {
     req.body.created_by = req.session.user_id;
     const eventData = await Event.create(req.body);
     res.status(200).json(eventData);
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });

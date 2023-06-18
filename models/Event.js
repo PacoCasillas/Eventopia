@@ -48,7 +48,7 @@ Event.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    imageURL: {
+    imageUrl: {
       type: DataTypes.STRING,
     },
     created_by: {

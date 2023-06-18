@@ -7,18 +7,6 @@ const { Event, User, Favorites, Attendees } = require("../models");
 router.get("/", async (req, res) => {
   try {
     const eventData = await Event.findAll({
-      attributes: [
-        "id",
-        "title",
-        "description",
-        "cost",
-        "capacity",
-        "location",
-        "startDate",
-        "endDate",
-        "startTime",
-        "endTime",
-      ],
       // FILTER TO DISPLAY ONLY FUTURE EVENTS -> EVENTS WHERE END DATE IS LESS THAN TODAY
       where: {
         endDate: {
@@ -28,6 +16,7 @@ router.get("/", async (req, res) => {
     });
     // it will contain plain JavaScript objects representing each post, instead of Sequelize model instances.
     const allEvents = eventData.map((event) => event.get({ plain: true }));
+    console.log(allEvents);
     res.render("homepage", {
       allEvents,
       // to determine whether or not to display the login/logout links in the header

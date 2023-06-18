@@ -21,7 +21,9 @@
         <p>{{event.location}}</p>
       </section>
       <section class="image" id="event-img">
-        <a>{{event.imgage}}</a>
+         {{#if event.imageUrl}}
+        <img src="{{event.imageUrl}}" alt="Event Image">
+        {{/if}}
       </section>
       <section>
         {{#if ../logged_In}}
