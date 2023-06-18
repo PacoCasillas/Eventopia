@@ -2,7 +2,6 @@ const router = require("express").Router();
 const { Op } = require("sequelize");
 const withAuth = require("../utils/auth");
 const { Event, User, Favorites, Attendees } = require("../models");
-const session = require("express-session");
 
 // GET ALL EVENTS -> http://localhost:3001/
 router.get("/", async (req, res) => {
@@ -32,7 +31,7 @@ router.get("/", async (req, res) => {
     res.render("homepage", {
       allEvents,
       // to determine whether or not to display the login/logout links in the header
-      logged_In: req.session.logged_In,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     console.log(err);
@@ -41,13 +40,10 @@ router.get("/", async (req, res) => {
 });
 
 // DASHBOARD -> http://localhost:3001/dashboard  -----> ADD withAuth
-router.get("/dashboard", withAuth, async (req, res) => {
+router.get("/dashboard", async (req, res) => {
   try {
-    // const userId = req.session.user_id;
-    // console.log(req.session.user_id);
-
-    // For it to render data without user logged in
     const userId = req.session.user_id;
+    // console.log(req.session.user_id);
 
     const dashboardData = await Event.findAll({
       // Fetch only posts created by the logged-in user
@@ -72,7 +68,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
 
     res.render("dashboard", {
       userEvents,
-      logged_In: req.session.logged_In, //determine whether or not to display the login/logout links in the header
+      loggedIn: req.session.loggedIn, //determine whether or not to display the login/logout links in the header
     });
   } catch (err) {
     console.log(err);
@@ -81,15 +77,21 @@ router.get("/dashboard", withAuth, async (req, res) => {
 });
 
 // CALENDAR -> http://localhost:3001/calendar
-router.get("/calendar", withAuth, (req, res) => {
+router.get("/calendar", (req, res) => {
+  // If the user is already logged in, redirect to the homepage
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
   // Otherwise, render the 'login' template
-  res.render("calendar", { logged_In: req.session.logged_In });
+  res.render("calendar");
 });
 
 // LOGIN -> http://localhost:3001/login
 router.get("/login", (req, res) => {
+  console.log(req.body);
   // If the user is already logged in, redirect to the homepage
-  if (req.session.logged_In) {
+  if (req.session.loggedIn) {
     res.redirect("/");
     return;
   }
@@ -100,7 +102,7 @@ router.get("/login", (req, res) => {
 // SIGNUP -> http://localhost:3001/signup
 router.get("/signup", (req, res) => {
   // If the user is already logged in, redirect to the homepage
-  if (req.session.logged_In) {
+  if (req.session.loggedIn) {
     res.redirect("/");
     return;
   }
@@ -109,9 +111,19 @@ router.get("/signup", (req, res) => {
 });
 
 // FAVORITES -> http://localhost:3001/favorites
-router.get("/favorites", withAuth, async (req, res) => {
+router.get("/favorites", async (req, res) => {
   try {
-    const userId = req.session.user_id;
+    // Commented out for future authentication implementation
+    // if (!req.session.logged_in) {
+    //   res.redirect("/login");
+    //   return;
+    // }
+
+    // commented out for when we have login user id
+    // const userId = req.session.user_id;
+
+    // hardcoded user for testing purposes
+    const userId = 3;
 
     // Fetch the user's favorites
     const favoritesData = await Favorites.findAll({
@@ -170,7 +182,6 @@ router.get("/favorites", withAuth, async (req, res) => {
     res.render("favorites", {
       favorites,
       attending,
-      logged_In: req.session.logged_In,
       // Commented out for future authentication implementation
       // logged_in: req.session.logged_in,
     });
@@ -200,5 +211,4 @@ router.get("/update-event/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 module.exports = router;

@@ -1,29 +1,41 @@
 <h2 class="m-3">Favorites</h2>
 {{#if favorites}}
-  <div class="event-list">
+  <ul>
     {{#each favorites as |event|}}
-      <div class="event-card bg-light text-dark">
-        <h3 class="event-title">{{event.title}}</h3>
-        <h5 class="event-date">From {{event.startDate}} to {{event.endDate}}</h5>
-        <p>@ {{event.location}} from {{event.startTime}} to {{event.endTime}}</p>
+      <div class="p-3 m-4 bg-light text-dark e-1"><li class="m-2"><h3
+            class="event-title"
+          >{{event.title}}</h3>
+          <h5 class="event-date">From
+            {{startDate}}
+            To
+            {{endDate}}
+          </h5>
+          <p>At {{event.location}} @ {{startTime}}-{{endTime}}</p>
+        </li>
       </div>
     {{/each}}
-  </div>
+  </ul>
 {{else}}
   <p>No favorites yet.</p>
 {{/if}}
 
 <h2 class="m-3">Attending</h2>
 {{#if attending}}
-  <div class="event-list">
+  <ul>
     {{#each attending as |event|}}
-      <div class="event-card bg-light text-dark">
-        <h3 class="event-title">{{event.title}}</h3>
-        <h5 class="event-date">From {{event.startDate}} to {{event.endDate}}</h5>
-        <p>@ {{event.location}} from {{event.startTime}} to {{event.endTime}}</p>
+      <div class="p-3 m-4 bg-light text-dark"><li class="m-2"><h3
+            class="event-title"
+          >{{event.title}}</h3>
+          <h5 class="event-date">From
+            {{startDate}}
+            To
+            {{endDate}}
+          </h5>
+          <p>At {{event.location}} @ {{startTime}}-{{endTime}}</p>
+        </li>
       </div>
     {{/each}}
-  </div>
+  </ul>
 {{else}}
   <p>Not attending any events yet.</p>
 {{/if}}

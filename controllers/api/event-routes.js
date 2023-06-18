@@ -1,12 +1,23 @@
 const router = require("express").Router();
-const { Event } = require("../../models");
+const { Event, User } = require("../../models");
 
 // CREATE EVENT -> http://localhost:3001/api/events
 router.post("/", async (req, res) => {
   // const created_by = 6;
   try {
-    req.body.created_by = req.session.user_id;
-    const eventData = await Event.create(req.body);
+    const eventData = await Event.create({
+      title: req.body.title,
+      description: req.body.description,
+      cost: req.body.cost,
+      capacity: req.body.capacity,
+      location: req.body.location,
+      startDate: req.body.startDate,
+      endDate: req.body.endDate,
+      startTime: req.body.startTime,
+      endTime: req.body.endTime,
+      created_by: req.session.user_id,
+      // created_by: created_by,
+    });
     res.status(200).json(eventData);
   } catch (err) {
     res.status(400).json(err);
