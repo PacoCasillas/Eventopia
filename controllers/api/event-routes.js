@@ -1,14 +1,22 @@
 const router = require("express").Router();
 const { Event } = require("../../models");
+const { parseEvent, insertEvent } = require("../../utils/calendar");
 
 // CREATE EVENT -> http://localhost:3001/api/events
 router.post("/", async (req, res) => {
-  // const created_by = 6;
-  console.log("session", req.session.user_id);
-  console.log(req.body);
   try {
     req.body.created_by = req.session.user_id;
     const eventData = await Event.create(req.body);
+    let calendarEvent = parseEvent(
+      req.body.title,
+      req.body.location,
+      req.body.description,
+      req.body.startDate,
+      req.body.endDate,
+      req.body.startTime,
+      req.body.endTime
+    );
+    await insertEvent(calendarEvent);
     res.status(200).json(eventData);
   } catch (err) {
     console.log(err);

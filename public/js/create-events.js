@@ -33,7 +33,6 @@ submitNewEvent.addEventListener("click", (e) => {
     capacity,
     imageUrl,
   };
-  console.log(data);
   fetch("/api/events", {
     method: "POST",
     headers: {

@@ -9,10 +9,15 @@ const eventData = [
     startDate: "2023-07-01",
     endDate: "2023-07-04",
     location: "Victoria Park",
+<<<<<<< HEAD
+    startTime: "02:00",
+    endTime: "10:00",
+=======
     startTime: "2:00 PM",
     endTime: "10:00 PM",
     imageUrl:
       "https://i0.wp.com/canadaslargestribfest.com/wp-content/uploads/2020/02/food.jpg?w=800&ssl=1",
+>>>>>>> d5ad3ee5452dbe1043c8ea3985c526de7c146283
     created_by: 1,
   },
   {
@@ -23,8 +28,8 @@ const eventData = [
     startDate: "2023-07-02",
     endDate: "2023-07-02",
     location: "Seacliff Park",
-    startTime: "10:00 AM",
-    endTime: "10:00 PM",
+    startTime: "10:00",
+    endTime: "22:00",
     created_by: 1,
   },
   {
@@ -35,8 +40,8 @@ const eventData = [
     startDate: "2023-07-05",
     endDate: "2023-07-06",
     location: "Seacliff Park",
-    startTime: "7:00 PM",
-    endTime: "10:00 PM",
+    startTime: "19:00",
+    endTime: "22:00",
     created_by: 2,
   },
   {
@@ -47,8 +52,8 @@ const eventData = [
     startDate: "2023-08-07",
     endDate: "2023-08-07",
     location: "Municipal Marina",
-    startTime: "5:00 PM",
-    endTime: "10:00 PM",
+    startTime: "17:00",
+    endTime: "22:00",
     created_by: 3,
   },
   {
@@ -60,8 +65,8 @@ const eventData = [
     startDate: "2023-08-10",
     endDate: "2023-08-14",
     location: "Municipal Marina",
-    startTime: "12:00 PM",
-    endTime: "7:00 PM",
+    startTime: "12:00",
+    endTime: "19:00",
     created_by: 4,
   },
 ];

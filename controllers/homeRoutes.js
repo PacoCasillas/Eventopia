@@ -31,12 +31,7 @@ router.get("/", async (req, res) => {
 // DASHBOARD -> http://localhost:3001/dashboard  -----> ADD withAuth
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
-    // const userId = req.session.user_id;
-    // console.log(req.session.user_id);
-
-    // For it to render data without user logged in
     const userId = req.session.user_id;
-
     const dashboardData = await Event.findAll({
       // Fetch only posts created by the logged-in user
       where: { created_by: userId },
@@ -55,13 +50,19 @@ router.get("/dashboard", withAuth, async (req, res) => {
       order: [["startDate", "DESC"]],
       include: [{ model: User }],
     });
-
-    const userEvents = dashboardData.map((post) => post.get({ plain: true }));
-
-    res.render("dashboard", {
-      userEvents,
-      logged_In: req.session.logged_In, //determine whether or not to display the login/logout links in the header
-    });
+    let userEvents = dashboardData.map((post) => post.get({ plain: true }));
+    if (userEvents.length === 0) {
+      userEvents = false;
+      res.render("dashboard", {
+        userEvents,
+        logged_In: req.session.logged_In, //determine whether or not to display the login/logout links in the header
+      });
+    } else {
+      res.render("dashboard", {
+        userEvents,
+        logged_In: req.session.logged_In, //determine whether or not to display the login/logout links in the header
+      });
+    }
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
