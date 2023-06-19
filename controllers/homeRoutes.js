@@ -170,7 +170,7 @@ router.get("/favorites", withAuth, async (req, res) => {
 
 router.get("/create-event", async (req, res) => {
   try {
-    res.render("createEvents");
+    res.render("createEvents", { logged_In: req.session.logged_In });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
