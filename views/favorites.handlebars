@@ -1,8 +1,8 @@
-<h2 class="m-3">Favorites</h2>
+<h2 class="m-3 text-center">Favorites</h2>
 {{#if favorites}}
-  <div class="event-list">
+  <div class="event-list justify-content-center">
     {{#each favorites as |event|}}
-      <div class="event-card bg-light text-dark">
+      <div class="event-card bg-light text-dark text-center col-3">
         <h3 class="event-title">{{event.title}}</h3>
         <h4 class="event-date">From
           {{event.startDate}}
@@ -14,18 +14,23 @@
           {{event.startTime}}
           to
           {{event.endTime}}</p>
+        <button
+          class="btn btn-danger delete-favorite-btn m-auto"
+          data-id="{{event.id}}"
+        >Remove</button>
       </div>
+
     {{/each}}
   </div>
 {{else}}
-  <p>No favorites yet.</p>
+  <p class="text-center m-5">No favorites yet.</p>
 {{/if}}
 
-<h2 class="m-3">Attending</h2>
+<h2 class="m-3 text-center">Attending</h2>
 {{#if attending}}
-  <div class="event-list">
+  <div class="event-list justify-content-center">
     {{#each attending as |event|}}
-      <div class="event-card bg-light text-dark">
+      <div class="event-card bg-light text-dark text-center col-3">
         <h3 class="event-title">{{event.title}}</h3>
         <h4 class="event-date">From
           {{event.startDate}}
@@ -37,9 +42,15 @@
           {{event.startTime}}
           to
           {{event.endTime}}</p>
+        <button
+          class="btn btn-danger delete-attendee-btn m-auto"
+          data-id="{{event.id}}"
+        >Remove</button>
       </div>
     {{/each}}
   </div>
 {{else}}
-  <p>Not attending any events yet.</p>
+  <p class="text-center m-5">Not attending any events yet.</p>
 {{/if}}
+
+<script src="/js/favorites.js"></script>
