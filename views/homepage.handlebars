@@ -6,7 +6,7 @@
     >
       <section class="event-header">
         <h3 class="event-title">{{event.title}}</h3>
-        <h5 class="event-date">From {{startDate}} To {{endDate}}</h5>
+        <h4 class="event-date">From {{startDate}} To {{endDate}}</h4>
       </section>
       <section class="event-body">
         <p class="event-details">{{event.description}}</p>
@@ -19,6 +19,11 @@
           Cost:
           {{event.cost}}</p>
         <p>{{event.location}}</p>
+      </section>
+      <section class="imageEvent" id="event-imageEvent">
+         {{#if event.imageUrl}}
+        <img class="imageUrl" src="{{event.imageUrl}}" alt="Event Image">
+        {{/if}}
       </section>
       <section>
         {{#if ../logged_In}}

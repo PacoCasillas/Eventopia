@@ -1,96 +1,146 @@
-<div class="d-flex col-12 justify-content-center my-5">
+<div class='d-flex col-12 justify-content-center my-5'>
   <form
-    class="d-flex flex-row flex-wrap col-4 border border-black rounded-4 p-4"
+    class='d-flex flex-row flex-wrap col-4 border border-black rounded-4 p-4'
   >
-    <div class="form-group col-12 text-center my-2">
-      <label for="event-title">Event title</label>
+    <div class='form-group col-12 text-center my-2'>
+      <label for='event-title'>
+        Event title
+      </label>
       <input
-        type="text"
-        class="form-control"
-        id="event-title"
-        placeholder="Enter event title"
+        type='text'
+        class='form-control'
+        id='event-title'
+        placeholder='Enter event title'
       />
     </div>
-    <div class="form-group col-6 text-center my-2">
-      <label for="event-start-date">Event Start Date</label>
+    <div class='form-group col-6 text-center my-2'>
+      <label for='event-start-date'>
+        Event Start Date
+      </label>
       <input
-        type="date"
-        class="form-control"
-        id="event-start-date"
-        placeholder="Enter event start date"
+        type='date'
+        class='form-control'
+        id='event-start-date'
+        placeholder='Enter event start date'
       />
     </div>
-    <div class="form-group col-6 text-center my-2">
-      <label for="event-start-time">Event Start Time</label>
+    <div class='form-group col-6 text-center my-2'>
+      <label for='event-start-time'>
+        Event Start Time
+      </label>
       <input
-        type="time"
-        class="form-control"
-        id="event-start-time"
-        placeholder="Enter event start time"
+        type='time'
+        class='form-control'
+        id='event-start-time'
+        placeholder='Enter event start time'
       />
     </div>
-    <div class="form-group col-6 text-center my-2">
-      <label for="event-end-date">Event End Date</label>
+    <div class='form-group col-6 text-center my-2'>
+      <label for='event-end-date'>
+        Event End Date
+      </label>
       <input
-        type="date"
-        class="form-control"
-        id="event-end-date"
-        placeholder="Enter event end date"
+        type='date'
+        class='form-control'
+        id='event-end-date'
+        placeholder='Enter event end date'
       />
     </div>
-    <div class="form-group col-6 text-center my-2">
-      <label for="event-end-time">Event End Time</label>
+    <div class='form-group col-6 text-center my-2'>
+      <label for='event-end-time'>
+        Event End Time
+      </label>
       <input
-        type="time"
-        class="form-control"
-        id="event-end-time"
-        placeholder="Enter event end time"
+        type='time'
+        class='form-control'
+        id='event-end-time'
+        placeholder='Enter event end time'
       />
     </div>
-    <div class="form-group col-12 text-center my-2">
-      <label for="event-description">Event Description</label>
+    <div class='form-group col-12 text-center my-2'>
+      <label for='event-description'>
+        Event Description
+      </label>
       <input
-        type="text"
-        class="form-control"
-        id="event-description"
-        placeholder="Enter event description"
+        type='text'
+        class='form-control'
+        id='event-description'
+        placeholder='Enter event description'
       />
     </div>
-    <div class="form-group col-12 text-center my-2">
-      <label for="event-location">Event Location</label>
+    <div class='form-group col-12 text-center my-2'>
+      <label for='event-location'>
+        Event Location
+      </label>
       <input
-        type="text"
-        class="form-control"
-        id="event-location"
-        placeholder="Enter event location"
+        type='text'
+        class='form-control'
+        id='event-location'
+        placeholder='Enter event location'
       />
     </div>
-    <div class="form-group col-6 text-center my-2">
-      <label for="event-cost">Event Cost</label>
+    <div class='form-group col-6 text-center my-2'>
+      <label for='event-cost'>
+        Event Cost
+      </label>
       <input
-        type="number"
-        class="form-control"
-        id="event-cost"
-        placeholder="Enter event cost"
+        type='number'
+        class='form-control'
+        id='event-cost'
+        placeholder='Enter event cost'
       />
     </div>
-    <div class="form-group col-6 text-center my-2">
-      <label for="event-capacity">Event Capacity</label>
+    <div class='form-group col-6 text-center my-2'>
+      <label for='event-capacity'>
+        Event Capacity
+      </label>
       <input
-        type="number"
-        class="form-control"
-        id="event-capacity"
-        placeholder="Enter event capacity"
+        type='number'
+        class='form-control'
+        id='event-capacity'
+        placeholder='Enter event capacity'
       />
     </div>
-    <div class="d-flex justify-content-center my-2 col-12">
+
+    {{! Code below to add image }}
+    <button type='button' id='upload_widget' class='cloudinary-button'>
+      Upload files
+    </button>
+
+    <script
+      src='https://upload-widget.cloudinary.com/global/all.js'
+      type='text/javascript'
+    ></script>
+
+    <script type='text/javascript'>
+      // global variable
+      var imageInfo;
+      var myWidget = cloudinary.createUploadWidget({
+      cloudName: 'dvz37vq43', 
+      uploadPreset: 'xawdeukq'}, 
+      (error, result) => { 
+    if (!error && result && result.event === "success") { 
+      imageInfo = result.info.secure_url; // Store the result.info in the global variable
+      console.log('Done! Here is the image info: ', imageInfo); 
+    }
+  }
+)
+
+document.getElementById("upload_widget").addEventListener("click", function(){
+    myWidget.open();
+  }, false);
+    </script>
+
+    <div class='d-flex justify-content-center my-2 col-12'>
       <button
-        id="submit-create-event-btn"
-        type="submit"
-        class="btn btn-primary"
-      >Submit</button>
+        id='submit-create-event-btn'
+        type='submit'
+        class='btn btn-primary'
+      >
+        Submit
+      </button>
     </div>
   </form>
 </div>
-<script src="/js/create-events.js"></script>
+<script src='/js/create-events.js'></script>
 ```
