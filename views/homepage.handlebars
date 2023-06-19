@@ -20,6 +20,11 @@
           {{event.cost}}</p>
         <p>{{event.location}}</p>
       </section>
+      <section class="imageEvent" id="event-imageEvent">
+         {{#if event.imageUrl}}
+        <img class="imageUrl" src="{{event.imageUrl}}" alt="Event Image">
+        {{/if}}
+      </section>
       <section>
         {{#if ../logged_In}}
           <div class="d-flex m-2 justify-content-center">

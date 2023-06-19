@@ -11,6 +11,8 @@ const eventData = [
     location: "Victoria Park",
     startTime: "2:00 PM",
     endTime: "10:00 PM",
+    imageUrl:
+      "https://i0.wp.com/canadaslargestribfest.com/wp-content/uploads/2020/02/food.jpg?w=800&ssl=1",
     created_by: 1,
   },
   {
