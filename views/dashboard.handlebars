@@ -24,8 +24,8 @@
           <p class="card-text">Event Location: {{event.location}}</p>
           <p class="card-text">Event Capacity: ${{event.cost}}</p>
           <p class="card-text">Event Capacity: {{event.capacity}} People</p>
-          <a href="/update-event/{{event.id}}" class="card-link update-event-btn">Update</a>
-          <a href="/delete" class="card-link" id="delete-event-btn">Delete</a>
+          <a href="/update-event/{{event.id}}" class="card-link update-event-btn btn">Update</a>
+          <button class="card-link btn delete-event-btn" data-id="{{event.id}}">Delete</button>
         </div>
       </div>
     </div>
