@@ -48,6 +48,9 @@ Event.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    imageUrl: {
+      type: DataTypes.STRING,
+    },
     created_by: {
       type: DataTypes.INTEGER,
       allowNull: false,

@@ -2,24 +2,11 @@ const router = require("express").Router();
 const { Op } = require("sequelize");
 const withAuth = require("../utils/auth");
 const { Event, User, Favorites, Attendees } = require("../models");
-const session = require("express-session");
 
 // GET ALL EVENTS -> http://localhost:3001/
 router.get("/", async (req, res) => {
   try {
     const eventData = await Event.findAll({
-      attributes: [
-        "id",
-        "title",
-        "description",
-        "cost",
-        "capacity",
-        "location",
-        "startDate",
-        "endDate",
-        "startTime",
-        "endTime",
-      ],
       // FILTER TO DISPLAY ONLY FUTURE EVENTS -> EVENTS WHERE END DATE IS LESS THAN TODAY
       where: {
         endDate: {
@@ -29,6 +16,7 @@ router.get("/", async (req, res) => {
     });
     // it will contain plain JavaScript objects representing each post, instead of Sequelize model instances.
     const allEvents = eventData.map((event) => event.get({ plain: true }));
+    console.log(allEvents);
     res.render("homepage", {
       allEvents,
       // to determine whether or not to display the login/logout links in the header
@@ -43,12 +31,7 @@ router.get("/", async (req, res) => {
 // DASHBOARD -> http://localhost:3001/dashboard  -----> ADD withAuth
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
-    // const userId = req.session.user_id;
-    // console.log(req.session.user_id);
-
-    // For it to render data without user logged in
     const userId = req.session.user_id;
-
     const dashboardData = await Event.findAll({
       // Fetch only posts created by the logged-in user
       where: { created_by: userId },
@@ -67,13 +50,19 @@ router.get("/dashboard", withAuth, async (req, res) => {
       order: [["startDate", "DESC"]],
       include: [{ model: User }],
     });
-
-    const userEvents = dashboardData.map((post) => post.get({ plain: true }));
-
-    res.render("dashboard", {
-      userEvents,
-      logged_In: req.session.logged_In, //determine whether or not to display the login/logout links in the header
-    });
+    let userEvents = dashboardData.map((post) => post.get({ plain: true }));
+    if (userEvents.length === 0) {
+      userEvents = false;
+      res.render("dashboard", {
+        userEvents,
+        logged_In: req.session.logged_In, //determine whether or not to display the login/logout links in the header
+      });
+    } else {
+      res.render("dashboard", {
+        userEvents,
+        logged_In: req.session.logged_In, //determine whether or not to display the login/logout links in the header
+      });
+    }
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -81,7 +70,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
 });
 
 // CALENDAR -> http://localhost:3001/calendar
-router.get("/calendar", withAuth, (req, res) => {
+router.get("/calendar", (req, res) => {
   // Otherwise, render the 'login' template
   res.render("calendar", { logged_In: req.session.logged_In });
 });
@@ -182,7 +171,7 @@ router.get("/favorites", withAuth, async (req, res) => {
 
 router.get("/create-event", async (req, res) => {
   try {
-    res.render("createEvents");
+    res.render("createEvents", { logged_In: req.session.logged_In });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
