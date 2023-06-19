@@ -31,7 +31,6 @@ submitNewEvent.addEventListener("click", (e) => {
     cost,
     capacity,
   };
-  console.log(data);
   fetch("/api/events", {
     method: "POST",
     headers: {

@@ -5,9 +5,10 @@
   <button id="create-event-btn" class="col-1 my-3 align-self-center text-end w-10" style="width: 115px">Create Event</button>
 </div>
 
+{{#if userEvents}}
 {{#each userEvents as |event|}}
-<div class="d-flex flex-column my-3">
-  <div class="container">
+<div class="d-flex flex-column my-3 align-items-center">
+  <div class="col-12 col-md-10">
     <div class="col-12 card">
       <div>
         <div class="card-body">
@@ -31,4 +32,9 @@
     </div>
   </div>
 {{/each}}
+{{else}}
+<div class="d-flex col-12 text-center">
+  <h2 class="col-12 my-3">No Events Found</h2>
+</div>
+{{/if}}
  <script src="/js/dashboard.js"></script>
