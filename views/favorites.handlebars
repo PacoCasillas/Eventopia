@@ -4,8 +4,16 @@
     {{#each favorites as |event|}}
       <div class="event-card bg-light text-dark">
         <h3 class="event-title">{{event.title}}</h3>
-        <h5 class="event-date">From {{event.startDate}} to {{event.endDate}}</h5>
-        <p>@ {{event.location}} from {{event.startTime}} to {{event.endTime}}</p>
+        <h4 class="event-date">From
+          {{event.startDate}}
+          to
+          {{event.endDate}}</h4>
+        <p>@
+          {{event.location}}
+          from
+          {{event.startTime}}
+          to
+          {{event.endTime}}</p>
       </div>
     {{/each}}
   </div>
@@ -19,8 +27,16 @@
     {{#each attending as |event|}}
       <div class="event-card bg-light text-dark">
         <h3 class="event-title">{{event.title}}</h3>
-        <h5 class="event-date">From {{event.startDate}} to {{event.endDate}}</h5>
-        <p>@ {{event.location}} from {{event.startTime}} to {{event.endTime}}</p>
+        <h4 class="event-date">From
+          {{event.startDate}}
+          to
+          {{event.endDate}}</h4>
+        <p>@
+          {{event.location}}
+          from
+          {{event.startTime}}
+          to
+          {{event.endTime}}</p>
       </div>
     {{/each}}
   </div>

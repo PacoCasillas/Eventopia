@@ -3,24 +3,21 @@ const Event = require("./Event");
 const Favorites = require("./Favorites");
 const User = require("./User");
 
-
 // One to Many associations between models
 
 // A USER can create many EVENT(s)
-User.hasMany(Event, { foreignKey: "created_by", onDelete: 'CASCADE', });
+User.hasMany(Event, { foreignKey: "created_by", onDelete: "CASCADE" });
 
-// USER makes EVENT(s)
+// USER(s) makes EVENT(s)
 Event.belongsTo(User, { foreignKey: "created_by" });
-// USER chooses Favorites 
+// USER(s) chooses Favorites
 Favorites.belongsTo(User, { foreignKey: "userId" });
 // EVENT(s) are Favorites
 Favorites.belongsTo(Event, { foreignKey: "eventId" });
-// USER chooses to Attend
+// USER(s) choose to Attend
 Attendees.belongsTo(User, { foreignKey: "userId" });
 // EVENT(s) are Attended
 Attendees.belongsTo(Event, { foreignKey: "eventId" });
-
-
 
 // Many to many associations between models
 
