@@ -1,10 +1,4 @@
-const createMyEventBtn = document.getElementById("create-event-btn");
 const deleteEventBtn = document.querySelectorAll(".delete-event-btn");
-
-createMyEventBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  window.location.href = "/create-event";
-});
 
 for (let i = 0; i < deleteEventBtn.length; i++) {
   deleteEventBtn[i].addEventListener("click", (e) => {

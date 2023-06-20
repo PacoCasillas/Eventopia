@@ -2,12 +2,13 @@
   <h2 class="col-12 my-3">My Events</h2>
 </div>
 <div class="d-flex col-11 justify-content-end">
-  <button id="create-event-btn" class="col-1 my-3 align-self-center text-end w-10" style="width: 115px">Create Event</button>
+  <a href="/create-event" class="card-link col-1 my-3 align-self-center text-center btn bg-success text-white" style="width: 120px">Create Event</a>
 </div>
 
+<div class="d-flex flex-column align-items-center">
 {{#if userEvents}}
 {{#each userEvents as |event|}}
-<div class="d-flex flex-column my-3 align-items-center">
+<div class="d-flex my-3"></div>
   <div class="col-12 col-md-10">
     <div class="col-12 card">
       <div>
@@ -25,16 +26,19 @@
           <p class="card-text">Event Location: {{event.location}}</p>
           <p class="card-text">Event Capacity: ${{event.cost}}</p>
           <p class="card-text">Event Capacity: {{event.capacity}} People</p>
-          <a href="/update-event/{{event.id}}" class="card-link update-event-btn btn">Update</a>
-          <button class="card-link btn delete-event-btn" data-id="{{event.id}}">Delete</button>
+          <a href="/update-event/{{event.id}}" class="card-link update-event-btn btn bg-primary text-white">Update</a>
+          <button class="card-link btn delete-event-btn bg-danger text-white" data-id="{{event.id}}">Delete</button>
         </div>
       </div>
     </div>
   </div>
 {{/each}}
+</div>
+
 {{else}}
 <div class="d-flex col-12 text-center">
   <h2 class="col-12 my-3">No Events Found</h2>
 </div>
 {{/if}}
+
  <script src="/js/dashboard.js"></script>

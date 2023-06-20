@@ -56,32 +56,7 @@ function parseEvent(
   return event;
 }
 
-async function clearCalendar() {
-  const response = await calendar.events.list({
-    auth: auth,
-    calendarId: calendarId,
-    timeMin: new Date("2020-01-01").toISOString(),
-    maxResults: 10,
-    singleEvents: true,
-    orderBy: "startTime",
-  });
-
-  const events = response.data.items;
-  if (events.length) {
-    await Promise.all(
-      events.map((event) =>
-        calendar.events.delete({
-          auth: auth,
-          calendarId: calendarId,
-          eventId: event.id,
-        })
-      )
-    );
-  }
-}
-
 module.exports = {
   insertEvent,
   parseEvent,
-  clearCalendar,
 };
