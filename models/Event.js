@@ -59,11 +59,6 @@ Event.init(
         key: "id",
       },
     },
-    // attendees: {
-    //   type: DataTypes.ARRAY(DataTypes.STRING),
-    //   allowNull: false,
-    //   defaultValue: [],
-    // },
   },
   {
     sequelize,
