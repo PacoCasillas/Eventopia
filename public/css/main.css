@@ -78,22 +78,25 @@ header {
   border-radius: 5px;
 }
 
-.hero-text h1 {
+.hero-text h1,
+.hero-text h2,
+.hero-text h3 {
   color: #fff;
-  font-size: 48px;
   margin: 0;
 }
 
+.hero-text h1 {
+  font-size: 48px;
+}
+
 .hero-text h2 {
-  color: #fff;
   font-size: 18px;
   margin: 10px 0;
 }
 
 .hero-text h3 {
-  color: #fff;
   font-size: 24px;
-  margin: 05px 0;
+  margin: 5px 0;
 }
 
 .scroll-link {
@@ -150,7 +153,6 @@ header {
   font-size: 24px;
   font-weight: bold;
   color: var(--secondary);
-  margin: 0;
 }
 
 .event-date {
@@ -205,33 +207,21 @@ header {
   .hero-text h1 {
     font-size: 48px;
   }
-}
-
-@media (max-width: 576px) {
-  .hero-text h1 {
-    font-size: 24px;
-  }
-}
-
-@media (max-width: 768px) {
   .hero-text h2 {
     font-size: 18px;
   }
-}
-
-@media (max-width: 576px) {
-  .hero-text h2 {
-    font-size: 12px;
-  }
-}
-
-@media (max-width: 768px) {
   .hero-text h3 {
     font-size: 24px;
   }
 }
 
 @media (max-width: 576px) {
+  .hero-text h1 {
+    font-size: 24px;
+  }
+  .hero-text h2 {
+    font-size: 12px;
+  }
   .hero-text h3 {
     font-size: 14px;
   }
