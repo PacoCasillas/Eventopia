@@ -64,9 +64,6 @@ btnFavorite.forEach((btn) => {
         return response.json(); // Parse the response body as JSON
       })
       // Here, 'data' contains the parsed response data
-      .then((data) => {
-        console.log(data);
-      })
       .catch((err) => {
         console.error(err);
       });
