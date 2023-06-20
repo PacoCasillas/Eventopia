@@ -33,7 +33,7 @@
       />
     </div>
     <div class="form-group col-6 text-center my-2">
-      <label for="event-end-date">Event Start Date</label>
+      <label for="event-end-date">Event End Date</label>
       <input
         type="date"
         class="form-control"
@@ -43,7 +43,7 @@
       />
     </div>
     <div class="form-group col-6 text-center my-2">
-      <label for="event-end-time">Event Start Time</label>
+      <label for="event-end-time">Event End Time</label>
       <input
         type="time"
         class="form-control"
@@ -112,7 +112,6 @@
       (error, result) => {
        if (!error && result && result.event === "success") {
       imageInfoUpload = result.info.secure_url; // Store the result.info in the global variable
-      console.log('Done! Here is the image info: ', imageInfoUpload);
      }
    }
   );
