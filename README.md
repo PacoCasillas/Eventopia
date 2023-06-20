@@ -1,7 +1,8 @@
 # Eventopia
+Link to the deployed application on Heroku: https://eventopia-ea333846024a.herokuapp.com/
 
 ## Introduction
-This is a simple event management application built with Node.js, Express, and Sequelize that is deployed on Heroku. It allows users to create, edit, and delete events, as well as authenticate and sign up.
+This is a simple event management application built with Node.js, Express, and Sequelize that is deployed on Heroku. It allows users to create, edit, and delete events, as well as authenticate and sign up. Calendar option helps track your future events.
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -10,6 +11,7 @@ This is a simple event management application built with Node.js, Express, and S
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Limitations](#limitations)
+- [Licenses](#licenses)
 - [Contributors](#contributors)
 
 ## Features
@@ -40,6 +42,7 @@ Calender: Allows users to add their events to a calender. There also will be a o
    -env.DB_NAME,
    -env.DB_USER,
    -env.DB_PASSWORD
+4. Get the Calendar ID and credentials from the google API and set it up in the .env file.
 
 ## Usage
 
@@ -49,6 +52,17 @@ Calender: Allows users to add their events to a calender. There also will be a o
 4. Use the provided interface to create, edit, and delete events.
 5. Use the provided interface to browse all events and favourite them.
 
+Here are some images of the deployed application:
+
+Here is the dashboard where you can create events:
+![](public/images/dashboard.PNG)
+
+This is how it looks when you click on Create event:
+![](public/images/event.PNG)
+
+![](public/images/calendar.PNG)
+![](public/images/favourites.PNG)
+
 ## Limitations
 1. Scalability: Handling a large number of concurrent users or events. As the user base or event count grows, the performance and responsiveness of the page could be affected.
 2. Accessibility: Event page is accessible to users with disabilities. Meeting accessibility standards and providing alternative methods of interaction for individuals with different needs.
@@ -56,6 +70,9 @@ Calender: Allows users to add their events to a calender. There also will be a o
 4. Third-party integrations: To deploy on Heroku, costs money to run the website. Adding in different dynos also require money. Rate limits, data access restrictions, or changes in API functionality can impact the event page.
 5. Event management features: Implementing certain features; such as reminders, notifications, or advanced event customization options. Incentives and efficiency when creating and managing an event.
 6. Security: Implementing security measures to protect user data, prevent unauthorized access, and mitigate potential vulnerabilities.
+
+## Licenses
+This project is licensed under the [MIT License](LICENSE).
 
 ## Contributors
 * [Francisco Olivares](https://github.com/PacoCasillas) 
