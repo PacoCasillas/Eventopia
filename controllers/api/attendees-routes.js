@@ -21,4 +21,17 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.delete("/:id", async (req, res) => {
+  try {
+    const attendeeData = await Attendees.destroy({
+      where: {
+        eventId: req.params.id,
+      },
+    });
+    res.status(200).json(attendeeData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 module.exports = router;

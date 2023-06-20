@@ -140,6 +140,7 @@ router.get("/favorites", withAuth, async (req, res) => {
         {
           model: Event,
           attributes: [
+            "id",
             "title",
             "description",
             "location",
