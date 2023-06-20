@@ -9,15 +9,10 @@ const eventData = [
     startDate: "2023-07-01",
     endDate: "2023-07-04",
     location: "Victoria Park",
-<<<<<<< HEAD
-    startTime: "02:00",
-    endTime: "10:00",
-=======
     startTime: "2:00 PM",
     endTime: "10:00 PM",
     imageUrl:
       "https://i0.wp.com/canadaslargestribfest.com/wp-content/uploads/2020/02/food.jpg?w=800&ssl=1",
->>>>>>> d5ad3ee5452dbe1043c8ea3985c526de7c146283
     created_by: 1,
   },
   {
