@@ -21,6 +21,7 @@ submitUpdateBtn.addEventListener("click", (e) => {
   const location = eventLocation.value;
   const cost = eventCost.value;
   const capacity = eventCapacity.value;
+  const imageUrl = imageInfoUpload;
   const data = {
     title,
     startDate,
@@ -31,8 +32,9 @@ submitUpdateBtn.addEventListener("click", (e) => {
     location,
     cost,
     capacity,
+    imageUrl,
   };
-  
+
   fetch("/api/events/" + eventID, {
     method: "PUT",
     headers: {
