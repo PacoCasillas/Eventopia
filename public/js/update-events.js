@@ -32,7 +32,7 @@ submitUpdateBtn.addEventListener("click", (e) => {
     cost,
     capacity,
   };
-  console.log(data);
+  
   fetch("/api/events/" + eventID, {
     method: "PUT",
     headers: {
