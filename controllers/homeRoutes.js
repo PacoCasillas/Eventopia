@@ -16,9 +16,10 @@ router.get("/", async (req, res) => {
     });
     // it will contain plain JavaScript objects representing each post, instead of Sequelize model instances.
     const allEvents = eventData.map((event) => event.get({ plain: true }));
-    console.log(allEvents);
+    let heroImage = true;
     res.render("homepage", {
       allEvents,
+      heroImage,
       // to determine whether or not to display the login/logout links in the header
       logged_In: req.session.logged_In,
     });
