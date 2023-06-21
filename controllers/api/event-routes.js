@@ -39,6 +39,7 @@ router.put("/:id", async (req, res) => {
         startTime: req.body.startTime,
         endTime: req.body.endTime,
         created_by: req.session.user_id,
+        imageUrl: req.body.imageUrl,
       },
       {
         where: {

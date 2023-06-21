@@ -1,9 +1,10 @@
 <html lang="en">
-
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eventopia</title>
+    <title>
+      Eventopia
+    </title>
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -15,24 +16,26 @@
   </head>
 
   <body>
-
-    <div class="hero-image">
-      <div class="hero-text">
-        <h1>Eventopia</h1>
-        <h2>Discover Memorable Events</h2>
-        <h3><a href="#navbar-section" class="scroll-link">Events For you!</a></h3>
+    {{#if heroImage}}
+      <div class="hero-image">
+        <div class="hero-text">
+          <h1>
+            Eventopia
+          </h1>
+          <h2><a href="#navbar-section" class="scroll-link">
+              Discover Memorable Events</a>
+          </h2>
+        </div>
       </div>
-    </div>
+    {{/if}}
 
-    <div class="card text-center">
+    <div class="card text-center" id="navbar-section">
       <div class="card-header">
         <header>
-
           <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-            <div class="container-fluid" id="navbar-section">
-
+            <div class="container-fluid">
               <button
-                class="navbar-toggler bg-light"
+                class="navbar-toggler bg-light ms-auto"
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#navbarNav"
@@ -42,24 +45,36 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                   <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/">
+                      Home
+                    </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/dashboard">Dashboard</a>
+                    <a class="nav-link" href="/calendar">
+                      Calendar
+                    </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/calendar">Calendar</a>
+                    <a class="nav-link" href="/dashboard">
+                      Dashboard
+                    </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/favorites">Favorites</a>
+                    <a class="nav-link" href="/favorites">
+                      Favorites
+                    </a>
                   </li>
                   {{#if logged_In}}
                     <li class="nav-item">
-                      <a class="nav-link logout" href="#">Logout</a>
+                      <a class="nav-link logout" href="#">
+                        Logout
+                      </a>
                     </li>
                   {{else}}
                     <li class="nav-item">
-                      <a class="nav-link" href="/login">Login</a>
+                      <a class="nav-link" href="/login">
+                        Login
+                      </a>
                     </li>
                   {{/if}}
                 </ul>
@@ -80,14 +95,14 @@
 
     <footer class="footer mt-auto py-3">
       <div class="container text-center">
-        <span class="text-muted">Eventopia &copy; 2023. All rights reserved.</span>
+        <span class="text-muted">
+          Eventopia &copy; 2023. All rights reserved.
+        </span>
       </div>
     </footer>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
     ></script>
-
   </body>
-
 </html>
