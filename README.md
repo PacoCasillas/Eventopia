@@ -44,6 +44,8 @@ Calender: Allows users to add their events to a calender. There also will be a o
 
 Here are some images of the deployed application:
 
+Here is the homepage:
+![](public/images/homepage.PNG)
 Here is the dashboard where you can create events:
 ![](public/images/dashboard.PNG)
 
