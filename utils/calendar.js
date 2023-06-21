@@ -45,12 +45,12 @@ function parseEvent(
     location: location,
     description: description,
     start: {
-      dateTime: startDate + "T" + startTime + ":00+07:00",
-      timeZone: "Asia/Bangkok",
+      dateTime: startDate + "T" + startTime + ":00+00:00",
+      timeZone: "America/New_York",
     },
     end: {
-      dateTime: endDate + "T" + endTime + ":00+07:00",
-      timeZone: "Asia/Bangkok",
+      dateTime: endDate + "T" + endTime + ":00+00:00",
+      timeZone: "America/New_York",
     },
   };
   return event;

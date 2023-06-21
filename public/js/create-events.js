@@ -21,6 +21,20 @@ submitNewEvent.addEventListener("click", (e) => {
   const cost = eventCost.value;
   const capacity = eventCapacity.value;
   const imageUrl = imageInfo;
+  if (
+    title === "" ||
+    startDate === "" ||
+    endDate === "" ||
+    startTime === "" ||
+    endTime === "" ||
+    description === "" ||
+    location === "" ||
+    cost === "" ||
+    capacity === "" 
+  ) {
+    alert("Please fill out all fields");
+    return;
+  }
   const data = {
     title,
     startDate,
