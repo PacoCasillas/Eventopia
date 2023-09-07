@@ -1,6 +1,6 @@
 # Eventopia
 
-Link to the deployed application on Heroku: https://eventopia-ea333846024a.herokuapp.com/
+Link to the deployed application on Heroku: https://vast-sands-19300-6673ec109b13.herokuapp.com/
 
 ## Introduction
 
@@ -34,7 +34,7 @@ Calender: Allows users to add their events to a calender. There also will be a o
 
 ## Usage
 
-- Navigate to the [Eventopia](https://eventopia-ea333846024a.herokuapp.com/).
+- Navigate to the [Eventopia](https://vast-sands-19300-6673ec109b13.herokuapp.com/).
 - Click on the `Login` link in the navigation bar.
 - If you have an account, enter your credentials and click on the `Login` button.
 - If you don't have an account, click on the `Sign Up` link and enter your credentials to create an account.
