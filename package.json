@@ -30,7 +30,8 @@
     "mysql2": "^2.2.5",
     "package": "^1.0.1",
     "path": "^0.12.7",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
